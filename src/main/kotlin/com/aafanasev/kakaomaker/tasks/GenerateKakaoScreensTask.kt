@@ -8,6 +8,7 @@ import org.gradle.api.GradleException
 import org.gradle.api.file.FileCollection
 import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.get
+import org.w3c.dom.Element
 import java.io.File
 import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory
@@ -15,7 +16,8 @@ import javax.xml.parsers.DocumentBuilderFactory
 open class GenerateKakaoScreensTask : DefaultTask() {
 
     companion object {
-        const val ATTR_NAMESPACE = "http://schemas.android.com/tools"
+        const val ATTR_ANDROID_NAMESPACE = "http://schemas.android.com/apk/res/android"
+        const val ATTR_KAKAO_NAMESPACE = "http://schemas.android.com/tools"
         const val ATTR_SCREEN = "kakaoScreen"
         const val ATTR_TYPE = "kakaoType"
         const val ATTR_IGNORE = "kakaoIgnore"
@@ -35,11 +37,24 @@ open class GenerateKakaoScreensTask : DefaultTask() {
             val document = xmlParser.parse(it)
 
             if (document.documentElement.tagName != "merge") {
-                val screenName = document.documentElement.getAttributeNS(ATTR_NAMESPACE, ATTR_SCREEN)
+                val screenName = document.documentElement.getAttributeNS(ATTR_KAKAO_NAMESPACE, ATTR_SCREEN)
 
                 if (screenName.isNotEmpty()) {
-                    log(screenName)
+                    log("Generating $screenName...")
+                    traverse(document.documentElement)
                 }
+            }
+
+            xmlParser.reset()
+        }
+    }
+
+    private fun traverse(element: Element) {
+        log(element.tagName)
+
+        if (element.hasChildNodes()) {
+            for (index in 0 until element.childNodes.length) {
+                traverse(element.childNodes.item(index) as Element)
             }
         }
     }
