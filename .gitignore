@@ -1,0 +1,10 @@
+/out
+/build
+
+/.idea
+/.gradle
+
+.DS_Store
+Thumbs.db
+
+*.iml
