@@ -27,5 +27,6 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("com.android.tools.build:gradle:3.2.1")
     implementation("com.squareup:kotlinpoet:1.0.1")
+    implementation(files("libs/kakao-1.4.0.jar"))
 }
 
