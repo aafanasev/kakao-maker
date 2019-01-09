@@ -5,15 +5,24 @@ plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
     `maven-publish`
+    id("com.gradle.plugin-publish") version "0.10.0"
 }
 
 gradlePlugin {
     plugins {
-        create("kakao-maker-gradle-plugin") {
-            id = "kakao-maker"
+        create("kakaoMakerPlugin") {
+            id = "com.aafanasev.kakao-maker"
+            displayName = "Kakao Maker"
+            description = "Generate Kakao screens from Android layouts"
             implementationClass = "com.aafanasev.kakaomaker.KakaoMakerPlugin"
         }
     }
+}
+
+pluginBundle {
+    website = "https://github.com/aafanasev/kakao-maker/"
+    vcsUrl = "https://github.com/aafanasev/kakao-maker/"
+    tags = listOf("kakao", "android", "espresso")
 }
 
 repositories {
