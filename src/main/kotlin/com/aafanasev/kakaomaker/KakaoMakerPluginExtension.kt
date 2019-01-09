@@ -10,8 +10,18 @@ open class KakaoMakerPluginExtension {
     var debug = false
 
     /**
-     * Output directory where generated screens will be saved
+     * Output directory where generated screens will be saved. Required
      */
-    var output: File? = null
+    var outputDir: File? = null
+
+    /**
+     * Application package, f.ex. "com.sample.app". If null or empty the value will be taken from [outputDir]
+     */
+    var applicationId: String? = null
+
+    /**
+     * Package name for generated classes. If null the value will be taken from [outputDir]
+     */
+    var packageName: String? = null
 
 }
