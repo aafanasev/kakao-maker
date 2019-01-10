@@ -133,6 +133,7 @@ package com.sample.app.screens
 import com.sample.app.R
 
 class MainScreen : Screen<MainScreen>() {
+    val root = KView { withId(R.id.root) } 
     val title = KTextView { withId(R.id.title) }
     val subTitle = KTextView { withId(R.id.sub_title) }
     val sharedBtn1 = KButton { withId(R.id.shared_btn_1) }
