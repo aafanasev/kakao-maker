@@ -5,6 +5,8 @@ Auto-generating [Kakao](https://github.com/agoda-com/kakao) screens.
 ## Install
 
 ```groovy
+// build.gradle
+
 plugins {
     id "com.aafanasev.kakao-maker" version "<version>"
 }
@@ -15,6 +17,8 @@ plugins {
 #### 1. Configure
 
 ```groovy
+// build.gradle
+
 kakaoMaker {
     
     // Logger
@@ -34,7 +38,7 @@ kakaoMaker {
 #### 2. Use
 
 ```xml
-// activity_main.xml
+<!-- activity_main.xml -->
 
 <LinearLayout
     android:id="@+id/root"
@@ -72,7 +76,8 @@ kakaoMaker {
 ```
 
 ```xml
-// merge.xml
+<!-- merge.xml -->
+
 <merge>
     
     <Button
@@ -84,7 +89,8 @@ kakaoMaker {
 ```
 
 ```xml
-// include.xml
+<!-- include.xml -->
+
 <FrameLayout
     ...>
     
@@ -97,7 +103,8 @@ kakaoMaker {
 ```
 
 ```xml
-// include_screen.xml
+<!-- include_screen.xml -->
+
 <FrameLayout
     tools:kakaoScreenName="SharedScreen"
     ...>
@@ -120,6 +127,7 @@ kakaoMaker {
 
 ```kotlin
 // MainScreen.kt
+
 package com.sample.app.screens
 
 import com.sample.app.R
@@ -137,6 +145,7 @@ class MainScreen : Screen<MainScreen>() {
 
 ```kotlin
 // SharedScreen.kt
+
 package com.sample.app.screens
 
 import com.sample.app.R
