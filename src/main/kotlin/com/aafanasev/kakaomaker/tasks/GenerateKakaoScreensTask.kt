@@ -2,12 +2,21 @@ package com.aafanasev.kakaomaker.tasks
 
 import com.aafanasev.kakaomaker.KakaoMakerPlugin
 import com.aafanasev.kakaomaker.KakaoMakerPluginExtension
-import com.aafanasev.kakaomaker.util.*
+import com.aafanasev.kakaomaker.util.Helper
+import com.aafanasev.kakaomaker.util.KakaoTypeProvider
+import com.aafanasev.kakaomaker.util.id
+import com.aafanasev.kakaomaker.util.isIncludeTag
+import com.aafanasev.kakaomaker.util.isMergeTag
+import com.aafanasev.kakaomaker.util.kakaoScreenName
+import com.agoda.kakao.Screen
 import com.android.build.gradle.BaseExtension
 import com.squareup.kotlinpoet.AnnotationSpec
+import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
+import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
+import com.squareup.kotlinpoet.asClassName
 import org.gradle.api.DefaultTask
 import org.gradle.api.GradleException
 import org.gradle.api.file.FileCollection
@@ -47,7 +56,11 @@ open class GenerateKakaoScreensTask : DefaultTask() {
                 if (screenName.isNotEmpty()) {
                     log("Generating $screenName...")
 
-                    val classBuilder = TypeSpec.classBuilder(screenName)
+                    val superclass = Screen::class.asClassName().parameterizedBy(ClassName.bestGuess(screenName))
+
+                    val classBuilder = TypeSpec
+                            .classBuilder(screenName)
+                            .superclass(superclass)
 
                     // classBuilder.addAnnotation(generatedAnnotation)
 
