@@ -3,7 +3,6 @@ package com.aafanasev.kakaomaker.tasks
 import com.aafanasev.kakaomaker.KakaoMakerPlugin
 import com.aafanasev.kakaomaker.KakaoMakerPluginExtension
 import com.aafanasev.kakaomaker.util.*
-import com.agoda.kakao.KView
 import com.android.build.gradle.BaseExtension
 import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.FileSpec
@@ -79,9 +78,10 @@ open class GenerateKakaoScreensTask : DefaultTask() {
 
         if (id.isNotEmpty()) {
             val name = Helper.viewIdToName(id)
+            val type = KakaoTypeProvider.getType(element.tagName)
 
-            val property = PropertySpec.builder(name, KView::class.java)
-                    .initializer("KView { withId(R.id.%L) } ", id)
+            val property = PropertySpec.builder(name, type)
+                    .initializer("%L { withId(R.id.%L) } ", type.simpleName, id)
                     .build()
 
             classBuilder.addProperty(property)
