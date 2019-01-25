@@ -5,6 +5,7 @@ import org.w3c.dom.Element
 internal const val ATTR_ANDROID_NAMESPACE = "http://schemas.android.com/apk/res/android"
 internal const val ATTR_KAKAO_NAMESPACE = "http://schemas.android.com/tools"
 internal const val ATTR_ID = "id"
+internal const val ATTR_LAYOUT = "layout"
 internal const val ATTR_SCREEN = "kakaoScreen"
 internal const val ATTR_TYPE = "kakaoType"
 internal const val ATTR_IGNORE = "kakaoIgnore"
@@ -26,3 +27,6 @@ internal val Element.isMergeTag: Boolean
 
 internal val Element.isIncludeTag: Boolean
     get() = tagName == "include"
+
+internal val Element.layout: String
+    get() = getAttribute(ATTR_LAYOUT).substringAfterLast("/")
