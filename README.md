@@ -42,7 +42,7 @@ kakaoMaker {
 
 <LinearLayout
     android:id="@+id/root"
-    tools:kakaoScreenName="MainScreen"
+    tools:kakaoScreen="MainScreen"
     ...>
     
     <TextView
@@ -106,7 +106,7 @@ kakaoMaker {
 <!-- include_screen.xml -->
 
 <FrameLayout
-    tools:kakaoScreenName="SharedScreen"
+    tools:kakaoScreen="SharedScreen"
     ...>
     
     <Button
