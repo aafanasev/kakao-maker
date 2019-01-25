@@ -49,9 +49,9 @@ open class GenerateKakaoScreensTask : DefaultTask() {
 
     private val generatedAnnotation by simpleLazy {
         AnnotationSpec.builder(Generated::class.java)
-                .addMember("value = %S", "Kakao Maker")
-                .addMember("date = %S", Date())
+                .addMember("value = [%S]", "Kakao Maker")
                 .addMember("comments = %S", "https://github.com/aafanasev/kakao-maker")
+                .addMember("date = %S", Date())
                 .build()
     }
 

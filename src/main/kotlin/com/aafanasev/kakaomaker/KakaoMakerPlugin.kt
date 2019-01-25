@@ -16,6 +16,7 @@ class KakaoMakerPlugin : Plugin<Project> {
         const val EXTENSION_NAME = "kakaoMaker"
         private const val UI_TEST_CONFIGURATION = "androidTestImplementation"
         private const val KAKAO_DEPENDENCY_PATH = "com.agoda.kakao:kakao:1.4.0"
+        private const val JSR_DEPENDENCY_PATH = "javax.annotation:jsr250-api:1.0"
     }
 
     override fun apply(project: Project) {
@@ -25,6 +26,7 @@ class KakaoMakerPlugin : Plugin<Project> {
         project.gradle.addListener(object : DependencyResolutionListener {
             override fun beforeResolve(p0: ResolvableDependencies) {
                 project.dependencies.add(UI_TEST_CONFIGURATION, KAKAO_DEPENDENCY_PATH)
+                project.dependencies.add(UI_TEST_CONFIGURATION, JSR_DEPENDENCY_PATH)
                 project.gradle.removeListener(this)
             }
 
