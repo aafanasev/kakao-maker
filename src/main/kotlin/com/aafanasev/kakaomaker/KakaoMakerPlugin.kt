@@ -15,7 +15,7 @@ class KakaoMakerPlugin : Plugin<Project> {
     companion object {
         const val EXTENSION_NAME = "kakaoMaker"
         private const val UI_TEST_CONFIGURATION = "androidTestImplementation"
-        private const val KAKAO_DEPENDENCY_PATH = "com.agoda.kakao:kakao:1.4.0"
+        private const val KAKAO_DEPENDENCY_PATH = "com.agoda.kakao:kakao:2.0.0"
         private const val JSR_DEPENDENCY_PATH = "javax.annotation:jsr250-api:1.0"
     }
 
