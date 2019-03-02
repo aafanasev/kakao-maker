@@ -31,7 +31,7 @@ repositories {
     google()
 }
 
-val kakaoJar = "libs/kakao-1.4.0.jar"
+val kakaoJar = "libs/kakao-2.0.0-sources.jar"
 
 dependencies {
     implementation(gradleApi())
