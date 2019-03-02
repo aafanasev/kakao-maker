@@ -11,7 +11,7 @@ import com.aafanasev.kakaomaker.util.kakaoScreenName
 import com.aafanasev.kakaomaker.util.layout
 import com.aafanasev.kakaomaker.util.simpleLazy
 import com.aafanasev.kakaomaker.util.viewIdToName
-import com.agoda.kakao.Screen
+import com.agoda.kakao.screen.Screen
 import com.android.build.gradle.BaseExtension
 import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.ClassName

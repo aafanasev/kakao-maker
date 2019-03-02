@@ -1,6 +1,16 @@
 package com.aafanasev.kakaomaker.util
 
-import com.agoda.kakao.*
+import com.agoda.kakao.bottomnav.KBottomNavigationView
+import com.agoda.kakao.common.views.KBaseView
+import com.agoda.kakao.common.views.KSwipeView
+import com.agoda.kakao.common.views.KView
+import com.agoda.kakao.drawer.KDrawerView
+import com.agoda.kakao.edit.KTextInputLayout
+import com.agoda.kakao.image.KImageView
+import com.agoda.kakao.pager.KViewPager
+import com.agoda.kakao.swiperefresh.KSwipeRefreshLayout
+import com.agoda.kakao.text.KButton
+import com.agoda.kakao.text.KTextView
 import kotlin.reflect.KClass
 
 object KakaoTypeProvider {
