@@ -1,5 +1,5 @@
 group = "com.aafanasev"
-version = "0.3"
+version = "0.3.1"
 
 plugins {
     `java-gradle-plugin`
