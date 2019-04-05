@@ -17,10 +17,10 @@ internal val Element.kakaoScreenName: String
     get() = getAttributeNS(ATTR_KAKAO_NAMESPACE, ATTR_SCREEN)
 
 internal val Element.kakaoType: String
-    get() = getAttributeNS(ATTR_ANDROID_NAMESPACE, ATTR_TYPE)
+    get() = getAttributeNS(ATTR_KAKAO_NAMESPACE, ATTR_TYPE)
 
 internal val Element.kakaoIgnore: Boolean
-    get() = getAttributeNS(ATTR_ANDROID_NAMESPACE, ATTR_IGNORE).isNotEmpty()
+    get() = getAttributeNS(ATTR_KAKAO_NAMESPACE, ATTR_IGNORE).isNotEmpty()
 
 internal val Element.isMergeTag: Boolean
     get() = tagName == "merge"
