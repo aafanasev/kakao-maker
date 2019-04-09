@@ -1,24 +1,47 @@
 package com.aafanasev.kakaomaker.idea
 
 import com.intellij.ide.highlighter.XmlFileType
+import com.intellij.notification.NotificationGroup
+import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.DataKeys
+import com.intellij.openapi.fileChooser.FileChooserFactory
+import com.intellij.openapi.fileChooser.FileSaverDescriptor
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.util.io.FileUtil
 import com.intellij.openapi.vfs.VirtualFile
+import java.io.File
 
 class GenerateKakaoScreenAction : AnAction() {
 
     override fun update(event: AnActionEvent) {
         val file = getSelectedFile(event)
-
         event.presentation.isEnabledAndVisible = file?.let { isSelectedFileAndroidLayout(it) } ?: false
     }
 
     override fun actionPerformed(event: AnActionEvent) {
         val file = getSelectedFile(event) ?: throw IllegalArgumentException("No file selected")
+        val className = guessScreenNameFromFilename(file.nameWithoutExtension)
 
-        // TODO: Generate screen class
-        // TODO: Show file save dialog
+        val saverDescriptor = FileSaverDescriptor("Save Kakao screen", "", "kt")
+        val saverDialog = FileChooserFactory.getInstance().createSaveFileDialog(saverDescriptor, event.project)
+
+        val saved = saverDialog.save(file.parent, "$className.kt")
+
+        // TODO: Do below code in background thread
+        if (saved != null) {
+            // TODO: Generate screen class
+            val fakeBody = """
+                class $className : Screen<$className> {
+                    val item = KView { withId(1) }
+                }
+            """.trimIndent()
+
+            FileUtil.writeToFile(saved.file, fakeBody, false)
+
+            notifyFileCreated(event.project, saved.file)
+        }
     }
 
     private fun getSelectedFile(event: AnActionEvent): VirtualFile? {
@@ -43,10 +66,22 @@ class GenerateKakaoScreenAction : AnAction() {
     private fun guessScreenNameFromFilename(filename: String): String {
         val screenName = filename
                 .split("_")
-                .filter { IGNORED_LAYOUT_FILENAME_WORDS.contains(it) }
+                .filterNot { IGNORED_LAYOUT_FILENAME_WORDS.contains(it) }
                 .joinToString(separator = "", transform = { it.capitalize() })
 
         return screenName + "Screen"
+    }
+
+    private fun notifyFileCreated(project: Project?, file: File) {
+        NotificationGroup
+                .balloonGroup("KAKAO_FILE_CREATED_ID")
+                .createNotification(
+                        "Kakao Maker",
+                        "${file.name} created",
+                        NotificationType.INFORMATION,
+                        null
+                )
+                .notify(project)
     }
 
     companion object {
