@@ -2,9 +2,9 @@ group = "com.aafanasev"
 version = "0.3.1"
 
 plugins {
-    `java-gradle-plugin`
-    `kotlin-dsl`
     `maven-publish`
+    `java-gradle-plugin`
+    kotlin("jvm") version "1.3.21"
     id("com.gradle.plugin-publish") version "0.10.0"
 }
 
@@ -25,24 +25,25 @@ pluginBundle {
     tags = listOf("kakao", "android", "espresso")
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            artifactId = "kakao-maker"
+
+            from(components["java"])
+        }
+    }
+}
+
 repositories {
     jcenter()
     mavenCentral()
     google()
 }
 
-val kakaoJar = "libs/kakao-2.0.0.jar"
-
 dependencies {
     implementation(gradleApi())
+    implementation(project(":common"))
     implementation(kotlin("stdlib-jdk8"))
     implementation("com.android.tools.build:gradle:3.3.1")
-    implementation("com.squareup:kotlinpoet:1.1.0")
-    implementation(files(kakaoJar))
-}
-
-tasks {
-    "jar"(Jar::class) {
-        from(zipTree(kakaoJar))
-    }
 }

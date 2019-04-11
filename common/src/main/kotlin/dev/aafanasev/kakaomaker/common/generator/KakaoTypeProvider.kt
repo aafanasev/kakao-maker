@@ -1,4 +1,4 @@
-package com.aafanasev.kakaomaker.util
+package dev.aafanasev.kakaomaker.common.generator
 
 import com.agoda.kakao.bottomnav.KBottomNavigationView
 import com.agoda.kakao.common.views.KBaseView
@@ -13,20 +13,22 @@ import com.agoda.kakao.text.KButton
 import com.agoda.kakao.text.KTextView
 import kotlin.reflect.KClass
 
-object KakaoTypeProvider {
+internal class KakaoTypeProvider {
 
-    private val BUILT_IN_TYPES = setOf<KClass<out KBaseView<*>>>(
-            KTextView::class,
-            KButton::class,
-            KImageView::class,
-            KTextInputLayout::class,
-            KSwipeRefreshLayout::class,
-            KSwipeView::class,
-            KViewPager::class,
-            KBottomNavigationView::class,
-            KDrawerView::class,
-            KView::class
-    )
+    companion object {
+        private val BUILT_IN_TYPES = setOf<KClass<out KBaseView<*>>>(
+                KTextView::class,
+                KButton::class,
+                KImageView::class,
+                KTextInputLayout::class,
+                KSwipeRefreshLayout::class,
+                KSwipeView::class,
+                KViewPager::class,
+                KBottomNavigationView::class,
+                KDrawerView::class,
+                KView::class
+        )
+    }
 
     fun getType(tagName: String): KClass<out KBaseView<*>> {
         for (type in BUILT_IN_TYPES) {

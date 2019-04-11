@@ -5,9 +5,6 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.DependencyResolutionListener
 import org.gradle.api.artifacts.ResolvableDependencies
-import org.gradle.kotlin.dsl.create
-import org.gradle.kotlin.dsl.get
-import org.gradle.kotlin.dsl.register
 
 @Suppress("Unused")
 class KakaoMakerPlugin : Plugin<Project> {
@@ -20,8 +17,8 @@ class KakaoMakerPlugin : Plugin<Project> {
     }
 
     override fun apply(project: Project) {
-        project.extensions["android"]
-        project.extensions.create<KakaoMakerPluginExtension>(EXTENSION_NAME)
+        project.extensions.getByName("android")
+        project.extensions.create(EXTENSION_NAME, KakaoMakerPluginExtension::class.java)
 
         project.gradle.addListener(object : DependencyResolutionListener {
             override fun beforeResolve(p0: ResolvableDependencies) {
@@ -33,7 +30,7 @@ class KakaoMakerPlugin : Plugin<Project> {
             override fun afterResolve(p0: ResolvableDependencies) {}
         })
 
-        project.tasks.register("generateKakaoScreens", GenerateKakaoScreensTask::class)
+        project.tasks.register("generateKakaoScreens", GenerateKakaoScreensTask::class.java)
     }
 
 }

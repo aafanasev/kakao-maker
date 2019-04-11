@@ -1,6 +1,7 @@
-package com.aafanasev.kakaomaker.util
+package dev.aafanasev.kakaomaker.common.util
 
-internal fun <T> simpleLazy(initializer: () -> T): Lazy<T> = lazy(LazyThreadSafetyMode.NONE, initializer)
+fun <T> simpleLazy(initializer: () -> T): Lazy<T> =
+        lazy(LazyThreadSafetyMode.NONE, initializer)
 
 internal fun viewIdToName(viewId: String) = if (viewId.contains("_")) {
     viewId.split("_")
