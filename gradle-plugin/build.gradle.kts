@@ -1,3 +1,5 @@
+import org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDependency
+
 group = "com.aafanasev"
 version = "0.3.1"
 
@@ -28,9 +30,24 @@ pluginBundle {
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            artifactId = "kakao-maker"
-
             from(components["java"])
+
+
+
+            pom {
+
+                configurations.implementation.dependencies
+//                        .filter { it is DefaultExternalModuleDependency }
+                        .forEach {
+                           // println("asd $it")
+                        }
+
+//                withXml {
+//                    (asNode()["dependencies"] as List<Node>).forEach {
+//                        println("asd $it")
+//                    }
+//                }
+            }
         }
     }
 }
@@ -46,4 +63,20 @@ dependencies {
     implementation(project(":common"))
     implementation(kotlin("stdlib-jdk8"))
     implementation("com.android.tools.build:gradle:3.3.1")
+}
+
+tasks {
+    "jar"(Jar::class) {
+        from(project(":common").sourceSets["main"].output.classesDirs)
+        from(zipTree(project(":common").file("libs/kakao-2.0.0.jar")))
+    }
+
+    register("deps") {
+        println("asd deps")
+
+       project(":common").configurations.implementation.dependencies
+                .forEach {
+                    println("asd $it")
+                }
+    }
 }

@@ -11,7 +11,10 @@ import com.intellij.openapi.fileChooser.FileSaverDescriptor
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.io.FileUtil
 import com.intellij.openapi.vfs.VirtualFile
+import dev.aafanasev.kakaomaker.common.generator.KakaoScreenGenerator
+import dev.aafanasev.kakaomaker.common.generator.ScreenParams
 import java.io.File
+import java.util.*
 
 class GenerateKakaoScreenAction : AnAction() {
 
@@ -31,14 +34,21 @@ class GenerateKakaoScreenAction : AnAction() {
 
         // TODO: Do below code in background thread
         if (saved != null) {
-            // TODO: Generate screen class
-            val fakeBody = """
-                class $className : Screen<$className> {
-                    val item = KView { withId(1) }
-                }
-            """.trimIndent()
 
-            FileUtil.writeToFile(saved.file, fakeBody, false)
+            val generator = KakaoScreenGenerator()
+            val files = TreeSet<String>()
+            var body = "empty"
+            try {
+                body = generator.generate(
+                        ScreenParams(className,"com.test","com.test"),
+                        File(file.canonicalPath),
+                        files
+                )
+            }catch (e:Exception) {
+                body = e.message!!
+            }
+
+            FileUtil.writeToFile(saved.file, body, false)
 
             notifyFileCreated(event.project, saved.file)
         }

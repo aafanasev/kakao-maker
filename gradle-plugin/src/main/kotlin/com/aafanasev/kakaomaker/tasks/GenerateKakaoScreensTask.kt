@@ -29,10 +29,12 @@ open class GenerateKakaoScreensTask : DefaultTask() {
     fun generateKakaoScreens() {
         ensureOutputDir()
 
-        println("asd ${project.childProjects.size}")
-        project.childProjects.forEach {
-            println("asd ${it.key}")
-        }
+        val ext = project.findProject("mylibrary")?.extensions?.getByName("android")
+        (ext as? BaseExtension)?.sourceSets?.getByName("main")?.res?.sourceFiles
+                ?.filter { it.isDirectory }
+                ?.forEach {
+                    println("asd $it")
+                }
 
         val parser = createXmlParser()
 
