@@ -1,1 +1,1 @@
-include("common", "gradle-plugin", "idea-plugin")
+include("common", "idea-plugin")
