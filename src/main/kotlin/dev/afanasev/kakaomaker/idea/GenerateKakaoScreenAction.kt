@@ -1,4 +1,4 @@
-package dev.aafanasev.kakaomaker.idea
+package dev.afanasev.kakaomaker.idea
 
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.notification.NotificationGroup
@@ -11,8 +11,8 @@ import com.intellij.openapi.fileChooser.FileSaverDescriptor
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.io.FileUtil
 import com.intellij.openapi.vfs.VirtualFile
-import dev.aafanasev.kakaomaker.generator.KakaoScreenGenerator
-import dev.aafanasev.kakaomaker.generator.ScreenParams
+import dev.afanasev.kakaomaker.generator.KakaoScreenGenerator
+import dev.afanasev.kakaomaker.generator.ScreenParams
 import java.io.File
 import java.util.*
 
@@ -40,7 +40,7 @@ class GenerateKakaoScreenAction : AnAction() {
             var body = "empty"
             try {
                 body = generator.generate(
-                        ScreenParams(className,"com.test","com.test"),
+                        ScreenParams(className, "com.test", "com.test"),
                         File(file.canonicalPath),
                         files
                 )

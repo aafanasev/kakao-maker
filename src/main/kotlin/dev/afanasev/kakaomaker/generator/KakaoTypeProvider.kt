@@ -1,4 +1,4 @@
-package dev.aafanasev.kakaomaker.generator
+package dev.afanasev.kakaomaker.generator
 
 import com.agoda.kakao.bottomnav.KBottomNavigationView
 import com.agoda.kakao.common.views.KBaseView

@@ -19,8 +19,8 @@
     <actions>
 
         <action
-                id="dev.aafanasev.kakaomaker.idea.GenerateKakaoScreenAction"
-                class="dev.aafanasev.kakaomaker.idea.GenerateKakaoScreenAction"
+                id="dev.afanasev.kakaomaker.idea.GenerateKakaoScreenAction"
+                class="dev.afanasev.kakaomaker.idea.GenerateKakaoScreenAction"
                 text="Generate Kakao screen from XML File...">
 
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
