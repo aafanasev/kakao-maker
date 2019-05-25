@@ -1,4 +1,4 @@
-package dev.aafanasev.kakaomaker.common.generator
+package dev.aafanasev.kakaomaker.generator
 
 import com.agoda.kakao.screen.Screen
 import com.squareup.kotlinpoet.AnnotationSpec
@@ -8,12 +8,12 @@ import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.asClassName
-import dev.aafanasev.kakaomaker.common.util.id
-import dev.aafanasev.kakaomaker.common.util.isIncludeTag
-import dev.aafanasev.kakaomaker.common.util.kakaoIgnore
-import dev.aafanasev.kakaomaker.common.util.kakaoScreenName
-import dev.aafanasev.kakaomaker.common.util.simpleLazy
-import dev.aafanasev.kakaomaker.common.util.viewIdToName
+import dev.aafanasev.kakaomaker.util.id
+import dev.aafanasev.kakaomaker.util.isIncludeTag
+import dev.aafanasev.kakaomaker.util.kakaoIgnore
+import dev.aafanasev.kakaomaker.util.kakaoScreenName
+import dev.aafanasev.kakaomaker.util.simpleLazy
+import dev.aafanasev.kakaomaker.util.viewIdToName
 import org.w3c.dom.Element
 import java.io.File
 import java.util.*

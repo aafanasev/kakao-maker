@@ -1,4 +1,4 @@
-package dev.aafanasev.kakaomaker.common.util
+package dev.aafanasev.kakaomaker.util
 
 import org.w3c.dom.Element
 

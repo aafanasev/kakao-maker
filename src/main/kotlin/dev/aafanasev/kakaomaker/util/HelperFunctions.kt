@@ -1,4 +1,4 @@
-package dev.aafanasev.kakaomaker.common.util
+package dev.aafanasev.kakaomaker.util
 
 fun <T> simpleLazy(initializer: () -> T): Lazy<T> =
         lazy(LazyThreadSafetyMode.NONE, initializer)

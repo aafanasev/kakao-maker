@@ -1,9 +1,14 @@
 <idea-plugin>
-    <id>com.aafanasev.kakaomaker.idea</id>
+
+    <id>dev.aafanasev.kakaomaker</id>
+
     <name>Kakao Maker</name>
-    <vendor email="tafanasyev@gmail.com" url="http://aafanasev.dev">Github</vendor>
+
+    <vendor email="tafanasyev@gmail.com" url="https://afanasev.dev">Github</vendor>
 
     <description><![CDATA[Generate Kakao screens from Android Studio]]></description>
+
+    <idea-version since-build="171"/>
 
     <depends>com.intellij.modules.androidstudio</depends>
 
@@ -14,8 +19,8 @@
     <actions>
 
         <action
-                id="com.aafanasev.kakaomaker.idea.GenerateKakaoScreenAction"
-                class="com.aafanasev.kakaomaker.idea.GenerateKakaoScreenAction"
+                id="dev.aafanasev.kakaomaker.idea.GenerateKakaoScreenAction"
+                class="dev.aafanasev.kakaomaker.idea.GenerateKakaoScreenAction"
                 text="Generate Kakao screen from XML File...">
 
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>

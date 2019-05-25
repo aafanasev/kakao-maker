@@ -1,4 +1,4 @@
-package dev.aafanasev.kakaomaker.common.generator
+package dev.aafanasev.kakaomaker.generator
 
 data class ScreenParams(
         /**
